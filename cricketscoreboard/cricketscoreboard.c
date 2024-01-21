@@ -236,8 +236,9 @@ printf("%s choose to bowl\n",toss);
       }
     bwl++;
     inc=inc1+inc;inc1=inc-inc1;inc=inc-inc1;
-    printf("\n%s is at strike now\n",team[choice1-1].p[inc]);
     printf("Over completed\n");
+    printf("\n%s is at strike now\n",team[choice1-1].p[inc]);
+    
     
     
     team[choice2-1].bowlerec[bwl]+=totruninover;
