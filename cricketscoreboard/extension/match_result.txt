@@ -1,0 +1,88 @@
+
+===================================================================================================================
+
+India scores 38 out of 2 overs
+Name		score	Fours	Sixes	
+Virat_Kohli        	38	2	5
+Rohit_Sharma       	0	0	0
+Jasprit_Bumrah     	0	0	0
+KL_Rahul           	0	0	0
+Ravindra_Jadeja    	0	0	0
+Shikhar_Dhawan     	0	0	0
+Ajinkya_Rahane     	0	0	0
+Mohammed_Shami     	0	0	0
+Rishabh_Pant       	0	0	0
+Ravichandran_Ashwin	0	0	0
+MSDHONI            	0	0	0
+Hasan_Ali          	1	0	0
+Sarfaraz_Ahmed     	1	0	32
+Mohammad_Abbas     	0	0	0
+Imad_Wasim         	0	0	0
+Shaheen_Shafridi   	0	0	0
+
+
+===================================================================================================================
+
+Pakistan scores 0 out of 2 overs
+Name		score	Fours	Sixes	
+Babar_Azam      	0	0	0
+Shaheen_Afridi  	0	0	0
+Fakhar_Zaman    	0	0	0
+Mohammad_Rizwan 	0	0	0
+Shadab_Khan     	0	0	0
+Imam-ul-Haq     	0	0	0
+Hasan_Ali       	0	0	0
+Sarfaraz_Ahmed  	0	0	0
+Mohammad_Abbas  	0	0	0
+Imad_Wasim      	0	0	0
+Shaheen_Shafridi	0	0	0
+Ajinkya_Rahane  	0	0	0
+Mohammed_Shami  	1	0	0
+Rishabh_Pant    	0	0	0
+Ravichandran_Ashwin	0	0	0
+MSDHONI         	0	0	0
+
+
+===================================================================================================================
+
+India scores 42 out of 2 overs
+Name		score	Fours	Sixes	
+Virat_Kohli        	42	0	7
+Rohit_Sharma       	0	0	0
+Jasprit_Bumrah     	0	0	0
+KL_Rahul           	0	0	0
+Ravindra_Jadeja    	0	0	0
+Shikhar_Dhawan     	0	0	0
+Ajinkya_Rahane     	0	0	0
+Mohammed_Shami     	0	0	0
+Rishabh_Pant       	0	0	0
+Ravichandran_Ashwin	0	0	0
+MSDHONI            	0	0	0
+Hasan_Ali          	1	0	0
+Sarfaraz_Ahmed     	1	0	36
+Mohammad_Abbas     	0	0	0
+Imad_Wasim         	0	0	0
+Shaheen_Shafridi   	0	0	0
+
+
+===================================================================================================================
+
+India scores 42 out of 2 overs
+Name		score	Fours	Sixes	
+Virat_Kohli        	42	0	7
+Rohit_Sharma       	0	0	0
+Jasprit_Bumrah     	0	0	0
+KL_Rahul           	0	0	0
+Ravindra_Jadeja    	0	0	0
+Shikhar_Dhawan     	0	0	0
+Ajinkya_Rahane     	0	0	0
+Mohammed_Shami     	0	0	0
+Rishabh_Pant       	0	0	0
+Ravichandran_Ashwin	0	0	0
+MSDHONI            	0	0	0
+Hasan_Ali          	1	0	0
+Sarfaraz_Ahmed     	1	0	36
+Mohammad_Abbas     	0	0	0
+Imad_Wasim         	0	0	0
+Shaheen_Shafridi   	0	0	0
+
