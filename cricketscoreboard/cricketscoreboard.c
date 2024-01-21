@@ -165,8 +165,9 @@ printf("%s choose to bat\n",toss);
 printf("The opening batsmen are %s and %s \n",team[choice1-1].p[inc],team[choice1-1].p[inc1]);
 }
 else{
-printf("%s choose to bowl\n",toss);
- printf("The opening batsmen are %s and %s \n",team[choice1-1].p[inc],team[choice1-1].p[inc1]);
+    printf("The opening batsmen are %s and %s \n",team[choice1-1].p[inc],team[choice1-1].p[inc1]);
+    printf("%s choose to bowl\n",toss);
+ 
  choice1=choice1+choice2;choice2=choice1-choice2;choice1=choice1-choice2;
  } 
  team[choice1-1].wickets=0;
