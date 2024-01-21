@@ -29,12 +29,6 @@ void run();
 void wide();
 int choosebatsmen();
 
-
-void noboll()
-{
-   printf("add run to total and batsmen\n");
-}
-
 char *ordinalNumbers[] = {"first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth"};
 
 int main() {
@@ -286,7 +280,7 @@ else{
    
    sleep(2);
    
-   printf("The opening batsmen are %s and %s",team[choice1-1].p[inc],team[choice1-1].p[inc1]);
+   printf("\nThe opening batsmen are %s and %s\n",team[choice2-1].p[inc],team[choice2-1].p[inc1]);
    goto sachin;}
   if(team[choice1-1].totalrun>team[choice2-1].totalrun)
     printf("\n\t\t\t%s won by %d runs\t\t\t\n",team[choice1-1].name,team[choice1-1].totalrun-team[choice2-1].totalrun);
@@ -328,12 +322,14 @@ void run()
 void ball()
 {
    int c;
+   r:
    printf("1.run\t2.norun\n");
    scanf("%d",&c);
    switch(c)
    {
       case 1:run();break;
       case 2:return;
+      default:printf("Please enter the valid choice \n"); goto r;
    }
 }
 int choosebatsmen(){
@@ -366,4 +362,3 @@ void wide()
   team[choice1-1].totalrun=team[choice1-1].totalrun+1;n++;totruninover++;
 
 }
-
