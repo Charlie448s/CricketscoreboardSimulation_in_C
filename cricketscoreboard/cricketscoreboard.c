@@ -6,7 +6,7 @@
 #define PLAYERS_PER_TEAM 11
 #define PLAYER_NAME_LENGTH 20
 int t,totruninover=0;
-int played,target=9999999,flag=0;
+int played,target=999999,flag=0,ovr;
 int choice1,choice2,other,bwl=6,inc=0,inc1=1;
 int gotocount=0;
 int i,j,n=6,out=0,b;
@@ -78,7 +78,8 @@ int main() {
     }
     
 
-
+printf("Enter the number of overs\n");
+scanf("%d",&ovr);
     int choice;
     int count = 0;
      printf("");
@@ -179,7 +180,7 @@ printf("%s choose to bowl\n",toss);
 
  gotocount++;
  
-   for(i=0;i<2;i++)
+   for(i=0;i<ovr;i++)
    {  if(bwl==10)
           bwl=6;
       team[choice1-1].over[bwl]+=1;  
