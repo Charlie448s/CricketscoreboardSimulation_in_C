@@ -71,9 +71,10 @@ int main() {
         }
     }
     
-
+do{
 printf("Enter the number of overs\n");
 scanf("%d",&ovr);
+}while(ovr==0);
     int choice;
     int count = 0;
      printf("");
@@ -240,7 +241,7 @@ else{
     team[choice2-1].bowlerec[bwl]+=totruninover;
    
    }
-     if(gotocount>1)
+     if(gotocount==1)
       target=team[choice1-1].totalrun;
     trgt:
     gameover:
@@ -312,6 +313,7 @@ void run()
       team[choice1-1].run6[inc]+=1;break;
       default: printf("Invlaid choice \n");goto label;  
    }
+   if(gotocount>1)
    if(team[choice1-1].totalrun>target){
     printf("\n\t\t\t%s won\t\t\t\n ",team[choice1-1].name);
     flag=1;
