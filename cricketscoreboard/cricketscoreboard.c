@@ -10,6 +10,8 @@ int played,target=999999,flag=0,ovr;
 int choice1,choice2,other,bwl=6,inc=0,inc1=1;
 int gotocount=0;
 int i,j,n=6,out=0,b;
+char t1[20],t2[20];
+char toss[20];
 struct players {
     char p[PLAYERS_PER_TEAM][PLAYER_NAME_LENGTH],name[20];
     int run[11];
@@ -22,8 +24,8 @@ struct players {
    int run6[11],run4[11];
 } team[TEAM_COUNT];
 int totalover(struct players *team);
-void batting(struct players *batsmen,int a);
-void bowling(struct players *bowler,int a);
+void batting();
+void bowling();
 void ball();
 void run();
 void wide();
@@ -88,7 +90,7 @@ scanf("%d",&ovr);
     printf("8. Netherlands\n");
     printf("9. West Indies\n");
     printf("10. England\n");
-    char t1[20],t2[20];
+
     
     while (count != 2) {
         count++;
@@ -139,7 +141,7 @@ scanf("%d",&ovr);
         }
         printf("\n");
     }
-char toss[20];
+
 tosser:
 printf("Enter the team which won the toss\n ");
 gets(toss);
@@ -152,19 +154,177 @@ goto tosser;}
 
 printf("What does %s choose\n",toss);
 int bat_bowl;
-
+// printf("1.Bowl\n2.bat\n");
+// scanf("%d",&bat_bowl);
+if(strcmp(team[choice1-1].name,toss)==0){
 printf("1.Bat\n2.bowl\n");
 scanf("%d",&bat_bowl);
 if(bat_bowl==1){
 printf("%s choose to bat\n",toss);
+
+ 
 printf("The opening batsmen are %s and %s \n",team[choice1-1].p[inc],team[choice1-1].p[inc1]);
+batting();
 }
 else{
+    printf("The opening batsmen are %s and %s \n",team[choice2-1].p[inc],team[choice2-1].p[inc1]);
+    printf("%s choose to bowl\n",toss);
+ choice1=choice1+choice2;choice2=choice1-choice2;choice1=choice1-choice2;
+ bowling();
+ exit(0);
+ }}
+if(strcmp(team[choice2-1].name,toss)==0){
+printf("1.Bat\n2.bowl\n");
+
+scanf("%d",&bat_bowl);
+if(bat_bowl==1){
+ choice1=choice1+choice2;choice2=choice1-choice2;choice1=choice1-choice2;
+printf("%s choose to bat\n",toss);
+printf("The opening batsmen are %s and %s \n",team[choice2-1].p[inc],team[choice2-1].p[inc1]);
+batting();
+}
+else{
+   
     printf("The opening batsmen are %s and %s \n",team[choice1-1].p[inc],team[choice1-1].p[inc1]);
     printf("%s choose to bowl\n",toss);
+
+ bowling();
+ }
+}
+return 0;
+}
+void batting(){ 
+ team[choice1-1].wickets=0;
+  team[choice2-1].bowlerec[bwl]=0;
+  team[choice1-1].over[bwl]=0;
+ sachin:
  
- choice1=choice1+choice2;choice2=choice1-choice2;choice1=choice1-choice2;
- } 
+ printf("==========================================================================================================================\n");
+ printf("\n%s vs %s\n",t1,t2);
+ sleep(2);
+ printf("===========================================================================================================================\n");
+
+ gotocount++;
+ 
+   for(i=0;i<ovr;i++)
+   {  if(bwl==10)
+          bwl=6;
+      team[choice1-1].over[bwl]+=1;  
+       
+      printf("%s is bowling\n",team[choice2-1].p[bwl]);
+      totruninover=0;
+      
+      for(j=0;j<n;j++)
+      {   bhendi: 
+        printf("%d over %d ball\n",i+1,j+1);
+       
+         printf("1.wide\t2.noball\t3.ball\t4.out\n");
+         scanf("%d",&b);
+         switch(b)
+         { 
+            case 1:wide();break;
+            case 2:team[choice1-1].totalrun=team[choice1-1].totalrun+1;n++;totruninover++;
+            sleep(1);
+            printf("Freehit\n");ball();break;
+            case 3:ball();break;
+            case 4:out=1;break;
+            default:printf("Wrong choice \n");n-1;goto bhendi;
+         }
+         if(flag==1){
+            goto trgt;
+         }
+         if(out==1)
+      {
+     
+     
+      printf("The %s takes %s wicket\n",team[choice2-1].name,ordinalNumbers[team[choice1-1].wickets]);
+      printf("%s is out at %d\n",team[choice1-1].p[inc],team[choice1-1].run[inc]);
+      if(inc<inc1){
+        inc=inc1+1;
+      }
+      else{
+        inc=inc+1;
+      }
+      
+      team[choice1-1].wickets+=1;
+      team[choice1-1].bowlerwicket[bwl]+=1;
+      if(team[choice1-1].wickets==10)
+         goto gameover;
+         
+      printf("The wicket is %d \n",team[choice1-1].wickets);
+      printf("The %s enters the field\n ",team[choice1-1].p[inc]);
+     
+      out=0;
+      
+      }
+       
+      
+   
+      }
+     team[choice2-1].bowlerec[bwl]+=totruninover;
+    bwl++;
+    inc=inc1+inc;inc1=inc-inc1;inc=inc-inc1;
+    printf("Over completed\n");
+    printf("\n%s is at strike now\n",team[choice1-1].p[inc]);
+    
+    
+    
+   
+   
+   }
+     if(gotocount==1)
+      target=team[choice1-1].totalrun;
+    trgt:
+    gameover:
+     if(gotocount>1)
+    team[choice2-1].bowlerec[bwl]+=totruninover;
+   
+    
+   // inc=inc1+inc;inc1=inc-inc1;inc=inc-inc1;
+    printf("\n===================================================================================================================\n");
+    printf("\n%s scores %d / %d wickets\n ", team[choice1 - 1].name, team[choice1 - 1].totalrun, team[choice1-1].wickets);
+    printf("Name\t\tscore\tFours\tSixes\t\n");
+
+    // Find the maximum length of names
+    int maxNameLength = 0;
+    for (int i = 0; i < 11; i++) {
+        int nameLength = strlen(team[choice1 - 1].p[i]);
+        if (nameLength > maxNameLength) {
+            maxNameLength = nameLength;
+        }
+    }
+
+    for (int i = 0; i < 11; i++) {
+        printf("%-*s\t%d\t%d\t%d\n", maxNameLength, team[choice1 - 1].p[i], team[choice1 - 1].run[i], team[choice1 - 1].run4[i], team[choice1 - 1].run6[i]);
+    }
+
+    printf("%s bowling\n", team[choice2 - 1].name);
+    printf("Name\t\tover\twickets\teconomy\n");
+
+    for (int i = 6; i < 11; i++) {
+        printf("%-*s\t%d\t%d\t%d\n", maxNameLength, team[choice2 - 1].p[i], team[choice1 - 1].over[i], team[choice1 - 1].bowlerwicket[i], team[choice2 - 1].bowlerec[i]);
+    }
+   choice1=choice1+choice2;choice2=choice1-choice2;choice1=choice1-choice2;
+   if(gotocount==1){
+   if(strcmp(toss,t1)!=0)
+   printf("%s is about bat\n",t1);
+   else
+   printf("%s is about to bat\n",t2);
+   
+   sleep(2);
+   
+   printf("\nThe opening batsmen are %s and %s\n",team[choice1-1].p[inc],team[choice1-1].p[inc1]);
+   goto sachin;}
+  if(team[choice1-1].totalrun>team[choice2-1].totalrun)
+    printf("\n\t\t\t%s won by %d runs\t\t\t\n",team[choice1-1].name,team[choice1-1].totalrun-team[choice2-1].totalrun);
+  else 
+     printf("%s won by %d runs",team[choice2-1].name,team[choice2-1].totalrun-team[choice1-1].totalrun);
+    
+    
+  
+
+}
+void bowling(){ 
  team[choice1-1].wickets=0;
   team[choice2-1].bowlerec[bwl]=0;
   team[choice1-1].over[bwl]=0;
@@ -231,6 +391,7 @@ else{
       
    
       }
+    team[choice2-1].bowlerec[bwl]+=totruninover;
     bwl++;
     inc=inc1+inc;inc1=inc-inc1;inc=inc-inc1;
     printf("Over completed\n");
@@ -238,13 +399,15 @@ else{
     
     
     
-    team[choice2-1].bowlerec[bwl]+=totruninover;
+    
    
    }
      if(gotocount==1)
       target=team[choice1-1].totalrun;
     trgt:
     gameover:
+    if(gotocount>1)
+    team[choice2-1].bowlerec[bwl]+=totruninover;
     
    
     
@@ -275,13 +438,15 @@ else{
    choice1=choice1+choice2;choice2=choice1-choice2;choice1=choice1-choice2;
    if(gotocount==1){
    if(strcmp(toss,t1)!=0)
-   printf("%s is about bat\n",t1);
+   printf("%s is about bat\n",t2);
    else
-   printf("%s is about to bat\n",t2);
+   printf("%s is about to bat\n",t1);
    
    sleep(2);
-   
+   if(gotocount>1)
    printf("\nThe opening batsmen are %s and %s\n",team[choice2-1].p[inc],team[choice2-1].p[inc1]);
+   else
+     printf("\n\nThe opening batsmen are %s and %s\n",team[choice1-1].p[inc],team[choice1-1].p[inc1]);
    goto sachin;}
   if(team[choice1-1].totalrun>team[choice2-1].totalrun)
     printf("\n\t\t\t%s won by %d runs\t\t\t\n",team[choice1-1].name,team[choice1-1].totalrun-team[choice2-1].totalrun);
@@ -289,7 +454,7 @@ else{
      printf("%s won by %d runs",team[choice2-1].name,team[choice2-1].totalrun-team[choice1-1].totalrun);
     
     
-    return 0;
+  
 
 }
 void run()
