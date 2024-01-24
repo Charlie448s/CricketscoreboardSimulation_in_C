@@ -2,11 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include<unistd.h>
+#include<time.h>
 #define TEAM_COUNT 10
 #define PLAYERS_PER_TEAM 11
 #define PLAYER_NAME_LENGTH 20
 int t,totruninover=0;
-int played,target=999999,flag=0,ovr;
+int played,target=9999,flag=0,ovr;
 int choice1,choice2,other,bwl=6,inc=0,inc1=1;
 int gotocount=0;
 int i,j,n=6,out=0,b;
@@ -65,9 +66,9 @@ int main() {
      for (int i = 0; i < TEAM_COUNT; i++) {
       
            
-            if (fscanf(file, "%s", team[i].name) != 1) {
+            if (fscanf(file1, "%s", team[i].name) != 1) {
                 fprintf(stderr, "Error reading player name from file.\n");
-                fclose(file);
+                fclose(file1);
                 exit(1);
             
         }
@@ -198,6 +199,8 @@ void batting(){
   team[choice2-1].bowlerec[bwl]=0;
   team[choice1-1].over[bwl]=0;
  sachin:
+ if(gotocount==1)
+    printf("\nThe opening batsmen are %s and %s\n",team[choice1-1].p[inc],team[choice1-1].p[inc1]);
  
  printf("==========================================================================================================================\n");
  printf("\n%s vs %s\n",t1,t2);
@@ -219,7 +222,20 @@ void batting(){
         printf("%d over %d ball\n",i+1,j+1);
        
          printf("1.wide\t2.noball\t3.ball\t4.out\n");
-         scanf("%d",&b);
+         int lower=1,upper=4;
+         srand(time(NULL));int temp;
+          temp=rand()%(upper-lower+1)+lower;
+          if(temp==1){
+            switch(temp){
+                case 1:temp=rand()%(upper-lower+1)+lower;break;
+                case 2:temp=rand()%(upper-lower+1)+lower;break;
+                case 3:temp=rand()%(upper-lower+1)+lower;break;
+                case 4:temp=rand()%(upper-lower+1)+lower;break;
+                
+            }    
+          }
+          b=temp;
+          //scanf("%d",&b);
          switch(b)
          { 
             case 1:wide();break;
@@ -239,6 +255,7 @@ void batting(){
      
       printf("The %s takes %s wicket\n",team[choice2-1].name,ordinalNumbers[team[choice1-1].wickets]);
       printf("%s is out at %d\n",team[choice1-1].p[inc],team[choice1-1].run[inc]);
+       out=0;
       if(inc<inc1){
         inc=inc1+1;
       }
@@ -254,7 +271,7 @@ void batting(){
       printf("The wicket is %d \n",team[choice1-1].wickets);
       printf("The %s enters the field\n ",team[choice1-1].p[inc]);
      
-      out=0;
+     
       
       }
        
@@ -313,7 +330,9 @@ void batting(){
    
    sleep(2);
    
-   printf("\nThe opening batsmen are %s and %s\n",team[choice1-1].p[inc],team[choice1-1].p[inc1]);
+//    printf("\nThe opening batsmen are %s and %s\n",team[choice1-1].p[inc],team[choice1-1].p[inc1]);
+   inc=0;inc1=1;bwl=6;
+   
    goto sachin;}
   if(team[choice1-1].totalrun>team[choice2-1].totalrun)
     printf("\n\t\t\t%s won by %d runs\t\t\t\n",team[choice1-1].name,team[choice1-1].totalrun-team[choice2-1].totalrun);
@@ -329,6 +348,8 @@ void bowling(){
   team[choice2-1].bowlerec[bwl]=0;
   team[choice1-1].over[bwl]=0;
  sachin:
+ if(gotocount==1)
+    printf("\nThe opening batsmen are %s and %s\n",team[choice1-1].p[inc],team[choice1-1].p[inc1]);
  printf("==========================================================================================================================\n");
  printf("\n%s vs %s\n",t1,t2);
  sleep(2);
@@ -349,7 +370,20 @@ void bowling(){
         printf("%d over %d ball\n",i+1,j+1);
        
          printf("1.wide\t2.noball\t3.ball\t4.out\n");
-         scanf("%d",&b);
+          int lower=1,upper=4;
+         srand(time(NULL));int temp;
+          temp=rand()%(upper-lower+1)+lower;
+          if(temp==1){
+            switch(temp){
+                case 1:temp=rand()%(upper-lower+1)+lower;break;
+                case 2:temp=rand()%(upper-lower+1)+lower;break;
+                case 3:temp=rand()%(upper-lower+1)+lower;break;
+                case 4:temp=rand()%(upper-lower+1)+lower;break;
+                
+            }    
+          }
+          b=temp;
+           //scanf("%d",&b);
          switch(b)
          { 
             case 1:wide();break;
@@ -369,6 +403,7 @@ void bowling(){
      
       printf("The %s takes %s wicket\n",team[choice2-1].name,ordinalNumbers[team[choice1-1].wickets]);
       printf("%s is out at %d\n",team[choice1-1].p[inc],team[choice1-1].run[inc]);
+      out=0;
       if(inc<inc1){
         inc=inc1+1;
       }
@@ -384,7 +419,7 @@ void bowling(){
       printf("The wicket is %d \n",team[choice1-1].wickets);
       printf("The %s enters the field\n ",team[choice1-1].p[inc]);
      
-      out=0;
+      
       
       }
        
@@ -447,6 +482,7 @@ void bowling(){
    printf("\nThe opening batsmen are %s and %s\n",team[choice2-1].p[inc],team[choice2-1].p[inc1]);
    else
      printf("\n\nThe opening batsmen are %s and %s\n",team[choice1-1].p[inc],team[choice1-1].p[inc1]);
+   inc1=1;inc=0;bwl=6;
    goto sachin;}
   if(team[choice1-1].totalrun>team[choice2-1].totalrun)
     printf("\n\t\t\t%s won by %d runs\t\t\t\n",team[choice1-1].name,team[choice1-1].totalrun-team[choice2-1].totalrun);
@@ -458,11 +494,17 @@ void bowling(){
 
 }
 void run()
-{
+{  int lower=1,upper=6;
+         srand(time(NULL));
+          
    int c;
+   
+ 
    label:
    printf("1 or 2 or 3 or 4 or 6 \n");
-   scanf("%d",&c);
+  
+   c=rand()%(upper-lower+1)+lower;
+    // scanf("%d",&c);
    switch(c)
    {
       case 1:printf("Now %s is at the strike\n",team[choice1-1].p[inc1]);
@@ -472,7 +514,6 @@ void run()
       case 3:printf("Now %s is at the strike\n",team[choice1-1].p[inc1]);
       team[choice1-1].run[inc]+=3;inc=inc1+inc;inc1=inc-inc1;inc=inc-inc1;team[choice1-1].totalrun+=3,totruninover+=3;break;
       case 4:printf("%s hit a boundary\n",team[choice1-1].p[inc]); 
-    
       team[choice1-1].run[inc]+=4;team[choice1-1].totalrun+=4;team[choice1-1].run4[inc]+=1,totruninover+=4;break;
       case 6:printf("%s hit maximum\n",team[choice1-1].p[inc]);team[choice1-1].run[inc]+=6;team[choice1-1].totalrun+=6,totruninover+=6;
       team[choice1-1].run6[inc]+=1;break;
@@ -487,40 +528,21 @@ void run()
 
 }
 void ball()
-{
+{  int lower=1,upper=2;
+         srand(time(NULL));
+          
    int c;
+   
    r:
    printf("1.run\t2.norun\n");
-   scanf("%d",&c);
+   c=rand()%(upper-lower+1)+lower;
+   // scanf("%d",&c);
    switch(c)
    {
       case 1:run();break;
       case 2:return;
       default:printf("Please enter the valid choice \n"); goto r;
    }
-}
-int choosebatsmen(){
-int i;
-if(inc<inc1){
-    i=inc1+1;
-}
-else{
-    i=inc+1;
-}
-for(;i<11;i++){
-    printf("Choose your batsmen %d:%s\n",i+1,team[choice1-1].p[i]);
-   
-}
-int chbtman;
-scanf("%d",&chbtman);
-chbtman-1;
-return chbtman;
-}
-int totalover(struct players *team){
-    int totover=0;
-    for(int i=0;i<50;i++)
-    totover+=team[choice1-1].over[i];
-return totover;
 }
 
 void wide()
