@@ -2,9 +2,9 @@ India
 Pakistan
 Australia
 Afghanistan
-Sri Lanka
+Sri_Lanka
 Bangladesh
-New Zealand
+New_Zealand
 Netherlands
-West Indies
+West_Indies
 England
