@@ -85,11 +85,11 @@ scanf("%d",&ovr);
     printf("2. Pakistan\n");
     printf("3. Australia\n");
     printf("4. Afghanistan\n");
-    printf("5. Sri Lanka\n");
+    printf("5. Sri_Lanka\n");
     printf("6. Bangladesh\n");
-    printf("7. New Zealand\n");
+    printf("7. New_Zealand\n");
     printf("8. Netherlands\n");
-    printf("9. West Indies\n");
+    printf("9. West_Indies\n");
     printf("10. England\n");
 
     
